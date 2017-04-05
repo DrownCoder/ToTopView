@@ -57,6 +57,17 @@ public class ToTopView extends RelativeLayout {
         InitView(context);
     }
 
+    private void initEvent(final RecyclerView recyclerView) {
+        setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(recyclerView != null){
+                    recyclerView.scrollToPosition(0);
+                }
+            }
+        });
+    }
+
     private void InitView(Context context) {
         //图片回到顶部
         mIvTop = new ImageView(context);
@@ -158,5 +169,7 @@ public class ToTopView extends RelativeLayout {
                 super.onScrolled(recyclerView, dx, dy);
             }
         });
+
+        initEvent(recyclerView);
     }
 }
